@@ -5,6 +5,8 @@ const templateCard = document.getElementById('template-card').content;
 const fragment = document.createDocumentFragment();
 const templateFooter = document.getElementById('template-footer').content;
 const templateCarrito = document.getElementById('template-carrito').content; //content es para acceder a todas las etiquetas que esta dentro de la etiqueta
+const templateBadge = document.getElementById('badge').content;
+const notifCarrito = document.getElementById('notificacion');
 let carrito = {}
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -71,12 +73,13 @@ const setCarrito = objeto => {
 	}
 
 	carrito[producto.id] = {...producto} //exprend operator ...producto adquirimos la informacion de producto y hacemos una copia
+	console.log(producto);
 	pintarCarrito();
 }
 
 const pintarCarrito = () => {
-	console.log(carrito);
-	items.innerHTML = '';
+	//console.log(carrito);
+	items_del_carrito.innerHTML = '';
 	Object.values(carrito).forEach(producto => {
 
 		templateCarrito.querySelector('th').textContent = producto.id;
@@ -88,15 +91,15 @@ const pintarCarrito = () => {
 		const clone = templateCarrito.cloneNode(true);
 		fragment.appendChild(clone);
 	})
-		items.appendChild(fragment);
-
-			pintarFooter()
+		items_del_carrito.appendChild(fragment);
+			pintarAlert();
+			pintarFooter();
 	localStorage.setItem('carrito', JSON.stringify(carrito)); //guardar en local storage
 		
 }
 
 const pintarFooter = () => {
-	footer.innerHTML = ''
+	footer.innerHTML = '';
 	if (Object.keys(carrito).length === 0) {
 		return footer.innerHTML = `<th scope="row" colspan="5">Carrito vacío - comience a comprar!</th>`
 	}
@@ -119,13 +122,13 @@ const pintarFooter = () => {
 }
 
 const btnVariar = e => {
-	console.log(e.target.dataset.id);
+	//console.log(e.target.dataset.id);
 	const product = carrito[e.target.dataset.id];
-	const idBtn = e.target.dataset.id;
+
 	if (e.target.classList.contains('btn-info')) {
 		//console.log(carrito[e.target.dataset.id].cantidad)
 		product.cantidad = product.cantidad + 1;
-		carrito[e.target.dataset.id] = {...product}
+		carrito[e.target.dataset.id] = {...product} 
 		pintarCarrito();
 	}
 	if (e.target.classList.contains('btn-danger')) {
@@ -136,4 +139,19 @@ const btnVariar = e => {
 		pintarCarrito();
 	}
 	e.stopPropagation()
+}
+
+const pintarAlert = () => {
+	//console.log(notifCarrito);
+	notifCarrito.innerHTML = '';
+	const nCantidad = Object.values(carrito).reduce((acc, {cantidad}) => acc + cantidad, 0);
+	//console.log(nCantidad);
+	if (nCantidad === 0) {
+		return notifCarrito.innerHTML;
+	}
+	templateBadge.querySelector('span').textContent = nCantidad;
+	const clone = templateBadge.cloneNode(true);
+	
+	fragment.appendChild(clone);
+	notifCarrito.appendChild(fragment);
 }
