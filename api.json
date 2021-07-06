@@ -1,0 +1,38 @@
+[
+  {
+    "precio": 25,
+    "id": 1,
+    "title": "Pasta al Pesto",
+    "thumbnailUrl": "https://cdn.pixabay.com/photo/2015/10/27/12/17/spagetti-1008867_960_720.jpg"
+  },
+  {
+    "precio": 15,
+    "id": 2,
+    "title": "Pizza",
+    "thumbnailUrl": "https://cdn.pixabay.com/photo/2014/04/22/02/56/pizza-329523_960_720.jpg"
+  },
+  {
+    "precio": 12,
+    "id": 3,
+    "title": "Camarones al ajillo",
+    "thumbnailUrl": "https://cdn.pixabay.com/photo/2012/07/27/20/48/prawns-53204_960_720.jpg"
+  },
+  {
+    "precio": 60,
+    "id": 4,
+    "title": "Paella",
+    "thumbnailUrl": "https://cdn.pixabay.com/photo/2018/06/07/19/58/paela-3460864_960_720.jpg"
+  },
+  {
+    "precio": 25,
+    "id": 5,
+    "title": "Parrilla",
+    "thumbnailUrl": "https://cdn.pixabay.com/photo/2015/08/21/18/19/sparerips-899306_960_720.jpg"
+  },
+  {
+    "precio": 6,
+    "id": 6,
+    "title": "Cerveza",
+    "thumbnailUrl": "https://cdn.pixabay.com/photo/2016/03/27/18/47/beers-1283566_960_720.jpg"
+  }
+]
